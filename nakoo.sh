@@ -13,10 +13,12 @@ nakooooooo(){
 	curl=$(curl -s "http://nako.best/moz.php?url=$1" -L)
 	da=$(echo $curl | grep -Po '(?<=DA":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
 	pa=$(echo $curl | grep -Po '(?<=PA":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
+	rankg=$(echo $curl | grep -Po '(?<=Global Rank":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
+	rankc=$(echo $curl | grep -Po '(?<=Global Rank":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
 	result=$(echo $curl | grep -Po '(?<=result":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
 	if [[ $curl =~ "200" ]]; then
-		printf "${GRN}Berhasil => ${ORANGE}$1 ${YELLOW}| DA : $da ${YELLOW}| PA : $pa\n"
-		echo "Berhasil => $1 | DA : $da | PA : $pa">>hasil.txt
+		printf "${GRN}Berhasil => ${ORANGE}$1 ${YELLOW}| DA : $da ${YELLOW}| PA : $pa ${YELLOW}| RG : $rankg ${YELLOW}| RC : $rankc \n"
+		echo "Berhasil => $1 | DA : $da | PA : $pa | RG : $rankg | RC : $rankc">>hasil.txt
 	else
 		printf "Gagal Check!\n"
 	fi
