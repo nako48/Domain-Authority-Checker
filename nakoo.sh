@@ -14,7 +14,7 @@ nakooooooo(){
 	da=$(echo $curl | grep -Po '(?<=DA":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
 	pa=$(echo $curl | grep -Po '(?<=PA":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
 	rankg=$(echo $curl | grep -Po '(?<=Global Rank":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
-	rankc=$(echo $curl | grep -Po '(?<=Global Rank":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
+	rankc=$(echo $curl | grep -Po '(?<=Rank Country":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
 	result=$(echo $curl | grep -Po '(?<=result":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
 	if [[ $curl =~ "200" ]]; then
 		printf "${GRN}Berhasil => ${ORANGE}$1 ${YELLOW}| DA : $da ${YELLOW}| PA : $pa ${YELLOW}| RG : $rankg ${YELLOW}| RC : $rankc \n"
