@@ -10,7 +10,7 @@ GRN="\e[32m"
 WHI="\e[37m"
 NC='\033[0m'
 nakooooooo(){
-	curl=$(curl -s "http://nako.best/index.php?url=$1" -L)
+	curl=$(curl -s "http://nako.best/moz.php?url=$1" -L)
 	da=$(echo $curl | grep -Po '(?<=DA":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
 	pa=$(echo $curl | grep -Po '(?<=PA":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
 	result=$(echo $curl | grep -Po '(?<=result":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
